@@ -11,6 +11,8 @@ contract PasswordStore {
     error PasswordStore__NotOwner();
 
     address private s_owner;
+    //this is not really private 
+    //all data onchain is public infomation
     string private s_password;
 
     event SetNetPassword();
@@ -23,6 +25,13 @@ contract PasswordStore {
      * @notice This function allows only the owner to set a new password.
      * @param newPassword The new password to set.
      */
+
+    //is it an external call 
+    //if it is only the owner can call it
+    //q why is the constructor owner not set in the contract?
+    //anybody can set the owner to be themselves
+    //missing access control
+
     function setPassword(string memory newPassword) external {
         s_password = newPassword;
         emit SetNetPassword();
