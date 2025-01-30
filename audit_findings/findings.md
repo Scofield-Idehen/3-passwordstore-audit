@@ -1,4 +1,4 @@
-### [s-#] TITLE (storing the password on-chain is visable to anyone, and no longer private )
+### [s-1] TITLE (storing the password on-chain is visable to anyone, and no longer private )
 
 **Description:** All data on chain is visable to anyone and can be read directly from the blockchain `Passwordstore::s_password` virable is intended to be private and should be called from the `Passwordstore::getPassword`
 
@@ -27,8 +27,10 @@ we use 1 beacuse thats the storage slot of s_password in the contract.
 ```
 cast storage <address_here> 1 --rpc-url http://127.0.0.1:8545
 ```
-
+0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
 You will get an output like this
+
+0x6d7950617373776f726400000000000000000000000000000000000000000014
 
 0x6d7950617373776f726400000000000000000000000000000000000000000014
 
@@ -45,7 +47,7 @@ And get an output of
 
 **Recommended Mitigation:** Dues to this, the overall structure should be redefined. 
 
-### [s-#]
+### [s-2] `Password::setPassword` has no access control, meaning a non-owner can change the password
 **Description:**
 **Impact:**
 **Proof of Concept:**

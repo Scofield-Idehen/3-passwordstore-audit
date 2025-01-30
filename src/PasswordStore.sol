@@ -11,7 +11,7 @@ contract PasswordStore {
     error PasswordStore__NotOwner();
 
     address private s_owner;
-    string private s_password;
+    string private s_password = "daddy";
 
     event SetNewPassword();
 
