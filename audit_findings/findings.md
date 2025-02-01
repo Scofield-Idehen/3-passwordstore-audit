@@ -48,11 +48,30 @@ And get an output of
 **Recommended Mitigation:** Dues to this, the overall structure should be redefined. 
 
 ### [s-2] `Password::setPassword` has no access control, meaning a non-owner can change the password
-**Description:**
-**Impact:**
-**Proof of Concept:**
-**Recommended Mitigation:** 0x5FbDB2315678afecb367f032d93F642f64180aa3
+**Description:** The `PasswordStore::setPassword` function is set to be an `external` function, however the netspec of the function and overall purpose of the smart contract is that `this function allows only the owner to set a new password`
 
+```javascript 
+
+ function setPassword(string memory newPassword) external {
+        // if (msg.sender != s_owner) {
+        //     revert PasswordStore__NotOwner();
+        // }
+        s_password = newPassword;
+        emit SetNewPassword();
+    }
+```
+
+**Impact:** Anyone can set/change the password therby breaking the password store. 
+
+**Proof of Concept:**
+
+**Recommended Mitigation:**  Add an access control to the `setPassword` function. 
+
+```javascript
+if(msg.sender != s_onwer){
+    revert PasswordStore_Notowner();
+}
+```
 
 
 

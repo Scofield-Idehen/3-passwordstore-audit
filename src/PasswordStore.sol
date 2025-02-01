@@ -24,9 +24,9 @@ contract PasswordStore {
      * @param newPassword The new password to set.
      */
     function setPassword(string memory newPassword) external {
-        if (msg.sender != s_owner) {
-            revert PasswordStore__NotOwner();
-        }
+        // if (msg.sender != s_owner) {
+        //     revert PasswordStore__NotOwner();
+        // }
         s_password = newPassword;
         emit SetNewPassword();
     }
